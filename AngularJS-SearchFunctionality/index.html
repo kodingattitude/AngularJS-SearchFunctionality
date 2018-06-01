@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html ng-app="searchfunctionality">
+<head>
+    <meta charset="utf-8" />
+    <title>AngularJS - Search Functionality</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.4/angular.min.js"></script>
+    <script src="index.js"></script>
+</head>
+<body ng-controller="SearchFuncController">
+    <div class="form-group container">
+        <div class="row">
+            <h3>AngularJS - Search Record From List</h3>
+        </div>
+        <div class="row" style="position:relative">
+            <div class="col-md-3">
+                <label>Item Code</label>
+                <input type="text" name="itemcode" class="form-control" id="itemcode" ng-model="searchItemCode" />
+            </div>
+            <div class="col-md-3">
+                <label>Item Name</label>
+                <input type="text" name="itemname" class="form-control" id="itemname" ng-model="searchItemName" />
+            </div>
+            <div class="col-md-3">
+                <label>Item Price</label>
+                <input type="text" name="itemprice" class="form-control" id="itemprice" ng-model="searchItemPrice" />
+            </div>
+            <!--Here I am using style also, because the alignment of button control is displaying horizontally along with labels of Item Code, Item Name, Item Price,
+            but what we need is it has to display along with input text boxes, so applying style="position:absolute;bottom:0;right:0;", the button controls display along with textbox controls horizontally-->
+            <div class="col-md-3" style="position:absolute;bottom:0;right:0;">
+                <button type="button" name="search" class="btn btn-primary" id="search" ng-click="SearchItems()">Search</button>
+                <button type="button" name="clear" class="btn btn-danger" id="clear" ng-click="ClearTextBoxes()">Clear</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Item Code</th>
+                            <th>Item Name</th>
+                            <th>Item Price</th>
+                        </tr>
+                    </thead>
+                    <tr ng-show="filteredItems.length!=0" ng-repeat="item in filteredItems">
+                        <td>{{ item.ItemCode}}</td>
+                        <td>{{ item.ItemName}}</td>
+                        <td>{{ item.ItemPrice}}</td>
+                    </tr>
+                    <tr ng-show="filteredItems.length==0" style="text-align:center;font-size:xx-large;color:lightgrey;font:bold 400% arial, verdana;">
+                        <td>
+                            No Records Found
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
